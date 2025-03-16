@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const user = await stackServerApp.getUser({or: 'redirect' });
+    const user = await stackServerApp.getUser();
 
     return (
     <html lang="en">
@@ -20,7 +20,8 @@ export default async function RootLayout({ children }) {
               <UserButton/>
               Hi, {user?.displayName || 'friend'}!
           </nav>
-        {children}
+          {children}
+          <Analytics />
       </StackTheme></StackProvider></body>
     </html>
   );
