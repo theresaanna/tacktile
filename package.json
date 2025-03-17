@@ -16,6 +16,7 @@
   "dependencies": {
     "@picocss/pico": "^2.0.6",
     "@stackframe/stack": "^2.7.27",
+    "@supabase/ssr": "^0.6.1",
     "@vercel/analytics": "^1.5.0",
     "next": "^15.2.2",
     "react": "^19.0.0",
