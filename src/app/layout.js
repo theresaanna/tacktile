@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { stackServerApp } from "../stack";
 import "./globals.css";
 import { UserButton } from '@stackframe/stack';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +16,9 @@ export default async function RootLayout({ children }) {
 
     return (
     <html lang="en">
-      <body><StackProvider app={stackServerApp}><StackTheme>
+      <body>
+      <SpeedInsights />
+      <StackProvider app={stackServerApp}><StackTheme>
           <nav>
               <UserButton/>
               Hi, {user?.displayName || 'friend'}!
