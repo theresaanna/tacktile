@@ -1,33 +1,43 @@
 "use client"
 
-import { createSupabaseClient } from "../utils/supabase";
 import { useUser } from "@stackframe/stack";
-import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import getFolders from "@/app/folders/db";
+import { useRouter } from "next/navigation";
 
-export default function Page() {
+export default function FoldersList() {
     const user = useUser({ or: "redirect" });
-    const supabase = createSupabaseClient();
     const [folders, setFolders] = useState([]);
+    const router = useRouter();
 
     useEffect(() => {
-        supabase.from('users')
-            .select('user_folders')
-            .eq('user_id', user.id)
-            .then(data => {
-                setFolders(data.data[0].user_folders);
-            });
-    }, []);
+        if (folders.length === 0) {
+            const getFoldersArr = async (userId) => {
+                const foldersArr = await getFolders(userId)
+                    .then((data) => {
+                        setFolders(data);
+                        router.refresh();
+                    });
+
+                return foldersArr;
+            }
+
+            getFoldersArr(user.id);
+        } else {
+            router.refresh();
+        }
+    }, [folders]);
 
     return (
         <div>
             <h2>Folders:</h2>
-            {folders.length === 0 && (
+            {(!folders) && (
                 <p>No folders yet! Maybe <Link href="/folders/add">add one</Link>?</p>
             )}
             <ul>
-                {folders.map((folder) => (
-                    <li key={folder+Date.now()}>{folder}</li>
+                {folders && folders.map((folder) => (
+                    <li key={folder+Math.random()}>{folder}</li>
                 ))}
             </ul>
         </div>
