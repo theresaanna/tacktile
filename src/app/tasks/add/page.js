@@ -1,5 +1,7 @@
 "use client"
 import { useUser } from "@stackframe/stack";
+import getFolders from "@/app/folders/db";
+import {useEffect, useState} from "react";
 
 export default function AddTaskPage({ addFormData }) {
     const user = useUser({ or: "redirect" });
@@ -13,6 +15,22 @@ export default function AddTaskPage({ addFormData }) {
         'Saturday',
         'Sunday'
     ];
+    const [folders, setFolders] = useState([]);
+
+    useEffect(() => {
+        if (folders.length === 0) {
+            const getFoldersArr = async (userId) => {
+                const foldersArr = await getFolders(userId)
+                    .then((data) => {
+                        setFolders(data);
+                    });
+
+                return foldersArr;
+            }
+
+            getFoldersArr(user.id);
+        }
+    }, [folders]);
 
     return (
         <div>
@@ -45,7 +63,11 @@ export default function AddTaskPage({ addFormData }) {
             </fieldset>
             <textarea name="task_notes" defaultValue="Notes"></textarea>
             <label htmlFor="task_folder">Folder</label>
-            <select name="task_folder"></select>
+            <select name="task_folder">
+                {folders && folders.map((folder) => (
+                    <option key={Math.random()} value={folder}>{folder}</option>
+                ))}
+            </select>
         </div>
     )
 }
