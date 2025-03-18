@@ -2,8 +2,9 @@
 import { useUser } from "@stackframe/stack";
 import getFolders from "@/app/folders/db";
 import {useEffect, useState} from "react";
+import addTask from "@/app/tasks/db";
 
-export default function AddTaskPage({ addFormData }) {
+export default function AddTaskPage() {
     const user = useUser({ or: "redirect" });
     const userId = user.id;
     const weekdays = [
@@ -32,12 +33,16 @@ export default function AddTaskPage({ addFormData }) {
         }
     }, [folders]);
 
+    const handleFormSubmit = async (formData) => {
+        await addTask(formData);
+    }
+
     return (
-        <div>
+        <form action={handleFormSubmit}>
             <input type="hidden" name="user_id" value={userId}/>
             <input type="hidden" name="task_id" value={userId + Date.now()}/>
-            <input type="text" name="task_name" defaultValue={addFormData?.get("task_name") || "Title"}/>
-            <input type="datetime-local" name="task_due_date" defaultValue={addFormData?.get("task_due_date") || "Date"}/>
+            <input type="text" name="task_name" defaultValue="Task name" />
+            <input type="datetime-local" name="task_due_date" defaultValue="Date" />
             <label htmlFor="task_repeat">Should this task repeat?</label>
             <input type="radio" name="task_repeat" value="yes"/><label htmlFor="task_repeat">Yes</label>
             <input type="radio" name="task_repeat" value="no" defaultChecked/><label htmlFor="task_repeat">No</label>
@@ -68,6 +73,7 @@ export default function AddTaskPage({ addFormData }) {
                     <option key={Math.random()} value={folder}>{folder}</option>
                 ))}
             </select>
-        </div>
+            <input type="submit" value="Add Task" />
+        </form>
     )
 }

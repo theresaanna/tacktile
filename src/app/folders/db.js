@@ -6,8 +6,7 @@ export default function getFolders(userId) {
         .select('user_folders')
         .eq('user_id', userId)
         .then(data => {
-            console.log(data.data[0].user_folders)
-            return data.data[0].user_folders;
+            return (data.data[0].user_folders || []);
         });
     return folders;
 };
