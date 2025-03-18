@@ -2,7 +2,7 @@
 import { useUser } from "@stackframe/stack";
 
 export default function AddTaskPage({ addFormData }) {
-    const user = useUser();
+    const user = useUser({ or: "redirect" });
     const userId = user.id;
     const weekdays = [
         'Monday',

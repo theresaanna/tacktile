@@ -1,7 +1,7 @@
 import { Sniglet } from "next/font/google";
 import { StackProvider, StackTheme } from "@stackframe/stack";
 import { Analytics } from "@vercel/analytics/react";
-import { stackServerApp } from "../stack";
+import { stackServerApp } from "@/stack";
 import "./globals.css";
 import { UserButton } from '@stackframe/stack';
 import { SpeedInsights } from "@vercel/speed-insights/next"

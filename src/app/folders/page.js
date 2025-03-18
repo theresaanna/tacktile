@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function Page() {
-    const user = useUser();
+    const user = useUser({ or: "redirect" });
     const supabase = createSupabaseClient();
     const [folders, setFolders] = useState([]);
 

@@ -4,7 +4,7 @@ import { stackServerApp } from "@/stack";
 import * as jose from "jose";
 
 export const getSupabaseJwt = async () => {
-    const user = await stackServerApp.getUser();
+    const user = await stackServerApp.getUser({ or: "redirect" });
 
     if (!user) {
         return null;
