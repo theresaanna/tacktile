@@ -1,8 +1,8 @@
 "use client"
 import { useUser } from "@stackframe/stack";
-import getFolders from "@/app/folders/db";
+import getFolders from "@/app/folders/getFolders";
 import {useEffect, useState} from "react";
-import addTask from "@/app/tasks/db";
+import addTask from "@/app/tasks/addTask";
 
 export default function AddTaskPage() {
     const user = useUser({ or: "redirect" });

@@ -3,7 +3,7 @@
 import { useUser } from "@stackframe/stack";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import getFolders from "@/app/folders/db";
+import getFolders from "@/app/folders/getFolders";
 import { useRouter } from "next/navigation";
 
 export default function FoldersList() {
