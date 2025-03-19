@@ -5,7 +5,7 @@ import { useUser } from "@stackframe/stack";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function Page() {
+export default function TasksList() {
     const user = useUser({ or: "redirect" });
     const supabase = createSupabaseClient();
     const [tasks, setTasks] = useState([]);
@@ -14,6 +14,7 @@ export default function Page() {
         supabase.from("tasks")
             .select("*")
             .match({'user_id': user.id})
+            .order('created_at', { ascending: false })
             .then(data => {
                 setTasks(data.data);
             });
