@@ -4,7 +4,7 @@ import getFolders from "@/app/folders/getFolders";
 import {useEffect, useState} from "react";
 import addTask from "@/app/tasks/addTask";
 
-export default function AddTaskPage() {
+export default function AddTaskForm() {
     const user = useUser({ or: "redirect" });
     const userId = user.id;
     const weekdays = [

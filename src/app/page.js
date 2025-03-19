@@ -1,4 +1,5 @@
 import TasksList from "@/app/tasks/page";
+import AddTaskForm from "@/app/tasks/add/page";
 
 export default function Dashboard() {
     return (
@@ -9,6 +10,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="add-task card">
+                    <AddTaskForm />
                 </div>
 
                 <div className="manage-folders card">
