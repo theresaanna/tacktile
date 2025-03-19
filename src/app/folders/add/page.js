@@ -2,7 +2,7 @@
 import { useUser } from "@stackframe/stack";
 import addFolder from "@/app/folders/addFolder";
 
-export default function AddFolder() {
+export default function AddFolderForm() {
     const user = useUser({ or: "redirect" });
 
     const handleAddFolder = (formData) => {
