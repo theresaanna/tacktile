@@ -88,6 +88,9 @@ export default function TasksList() {
                                         Mark complete!
                                     </label>
                                 </form>
+                                {task.task_folder && (
+                                    <p>Folder: {task.task_folder}</p>
+                                )}
                             </div>
                         </li>
                     ))}
