@@ -24,7 +24,10 @@ export default function TasksList() {
     useEffect(() => {
         supabase.from("tasks")
             .select("*")
-            .match({'user_id': user.id})
+            .match({
+                'user_id': user.id,
+                'task_isActive': true
+            })
             .order('created_at', { ascending: false })
             .then(data => {
                 setTasks(data.data);
