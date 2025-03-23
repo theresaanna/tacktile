@@ -4,11 +4,20 @@ import { createSupabaseClient } from "../utils/supabase";
 import { useUser } from "@stackframe/stack";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function TasksList() {
     const user = useUser({ or: "redirect" });
     const supabase = createSupabaseClient();
     const [tasks, setTasks] = useState([]);
+    var carouselSettings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
 
     useEffect(() => {
         supabase.from("tasks")
@@ -27,9 +36,11 @@ export default function TasksList() {
                 <p>No tasks yet! Maybe <Link href="/tasks/add">add one</Link>?</p>
             )}
             <ul>
-                {tasks.map((task) => (
-                    <li key={task.id}>{task.task_name}</li>
-                ))}
+                <Slider {...carouselSettings}>
+                    {tasks.map((task) => (
+                        <li key={task.id}>{task.task_name}</li>
+                    ))}
+                </Slider>
             </ul>
         </div>
     )

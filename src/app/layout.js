@@ -18,14 +18,17 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body>
       <SpeedInsights />
-      <StackProvider app={stackServerApp}><StackTheme>
-          <nav>
-              <UserButton/>
-              Hi, {user?.displayName || 'friend'}!
-          </nav>
-          {children}
-          <Analytics />
-      </StackTheme></StackProvider></body>
+        <StackProvider app={stackServerApp}>
+            <StackTheme>
+              <nav>
+                  <UserButton/>
+                  Hi, {user?.displayName || 'friend'}!
+              </nav>
+              {children}
+              <Analytics />
+            </StackTheme>
+        </StackProvider>
+      </body>
     </html>
   );
 }

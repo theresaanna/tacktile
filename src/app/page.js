@@ -5,6 +5,7 @@ import AddFolderForm from "@/app/folders/add/page";
 import DueNext from "@/app/folders/DueNext";
 
 export default function Dashboard() {
+
     return (
         <div>
             <div className="pinboard">
