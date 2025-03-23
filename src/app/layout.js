@@ -2,9 +2,10 @@ import { Sniglet } from "next/font/google";
 import { StackProvider, StackTheme } from "@stackframe/stack";
 import { Analytics } from "@vercel/analytics/react";
 import { stackServerApp } from "@/stack";
-import "./globals.css";
+import "./globals.sass";
 import { UserButton } from '@stackframe/stack';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import 'bulma/css/bulma.min.css';
 
 export const metadata = {
   title: "Create Next App",
@@ -25,9 +26,16 @@ export default async function RootLayout({ children }) {
       <SpeedInsights />
         <StackProvider app={stackServerApp}>
             <StackTheme>
-              <nav>
-                  <UserButton/>
-                  Hi, {user?.displayName || 'friend'}!
+              <nav className="level">
+                <h1 className="level-left">
+                    <a href="/" name="Home">Tacktile<img className="tack" src="/tack.png" alt="Tack" /></a>
+                </h1>
+                <div className="login level-right">
+                    <div className="level-item">
+                        <UserButton/>
+                        Hi, {user?.displayName || 'friend'}!
+                    </div>
+                </div>
               </nav>
               {children}
               <Analytics />

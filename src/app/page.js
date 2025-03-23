@@ -8,21 +8,21 @@ export default function Dashboard() {
 
     return (
         <div>
-            <div className="pinboard">
-                <div className="newest-tasks card">
+            <div className="pinboard grid-container">
+                <div className="newest-tasks taskcard color-lilac">
                     <TasksList />
                 </div>
 
-                <div className="add-task card">
+                <div className="add-task taskcard color-pink">
                     <AddTaskForm />
                 </div>
 
-                <div className="manage-folders card">
+                <div className="manage-folders taskcard color-dark-blue">
                     <FoldersList />
                     <AddFolderForm />
                 </div>
 
-                <div className="due-next card">
+                <div className="due-next taskcard color-dark-green">
                     <DueNext />
                 </div>
             </div>

@@ -1,0 +1,76 @@
+$color-dark-peach: #fcceb7
+$color-medium-peach: #feebe2
+$color-light-peach: #f9f1ed
+$color-dark-blue: #4b9dc1
+$color-light-blue: #8fbcd1
+$color-dark-green: #5daba9
+$color-light-green: #aaebc2
+$color-lilac: #92a3ff
+$color-lavender: #cb98f0
+$color-pink: #ffa1d3
+
+.color-dark-blue
+  background-color: $color-dark-blue
+
+.color-light-blue
+  background-color: $color-light-blue
+
+.color-dark-green
+  background-color: $color-dark-green
+
+.color-light-green
+  background-color: $color-light-green
+
+.color-lilac
+  background-color: $color-lilac
+
+.color-lavender
+  background-color: $color-lavender
+
+.color-pink
+  background-color: $color-pink
+
+body
+  margin: 0
+  padding: 0
+  background-color: $color-medium-peach
+
+nav
+  background-color: $color-dark-peach
+  padding: 1em
+  color: #fff
+  font-size: 1.75em
+  h1
+    font-size: 2em
+
+nav:after
+  content: ""
+  display: table
+  clear: both
+
+.taskcard
+  width: 400px
+  height: 300px
+  padding: 1em
+  color: #fff
+  font-size: 1.25em
+  background-image: url('/tack.png')
+  background-position: top right
+  background-repeat: no-repeat
+  background-size: 50px
+  h2
+    font-size: 1.5em
+
+.tack
+  width: 40px
+
+.grid-container
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr))
+  grid-gap: 16px
+
+.pinboard
+  padding: 1em
+
+a, a:link, a:visited, a:active
+  color: #fff
