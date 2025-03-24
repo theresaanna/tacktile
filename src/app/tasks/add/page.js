@@ -45,7 +45,7 @@ export default function AddTaskForm() {
                 <input type="hidden" name="task_id" value={userId + Date.now()}/>
                 <input type="text" name="task_name" defaultValue="Task name" />
                 <input type="datetime-local" name="task_due_date" defaultValue="Date" />
-                <label htmlFor="task_repeat">Should this task repeat?</label>
+{/*                <label htmlFor="task_repeat">Should this task repeat?</label>
                 <input type="radio" name="task_repeat" value="yes"/><label htmlFor="task_repeat">Yes</label>
                 <input type="radio" name="task_repeat" value="no" defaultChecked/><label htmlFor="task_repeat">No</label>
                 <label htmlFor="task_frequency_cadence">Reminders: How often?</label>
@@ -67,10 +67,11 @@ export default function AddTaskForm() {
                                    value={day}/>
                         </div>
                     ))}
-                </fieldset>
+                </fieldset>*/}
                 <textarea name="task_notes" defaultValue="Notes"></textarea>
                 <label htmlFor="task_folder">Folder</label>
                 <select name="task_folder">
+                    <option value="">None</option>
                     {folders && folders.map((folder) => (
                         <option key={Math.random()} value={folder}>{folder}</option>
                     ))}
