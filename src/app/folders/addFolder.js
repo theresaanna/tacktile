@@ -14,7 +14,7 @@ export default async function addFolder(formData) {
         })
         .eq('user_id', formData.get("user_id"))
         .then(data => {
-            console.log(data)
+
         })
 
     return folder;

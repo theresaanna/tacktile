@@ -17,6 +17,7 @@ export default function FoldersList() {
                 const foldersArr = await getFolders(userId)
                     .then((data) => {
                         setFolders(data);
+                        console.log(router)
                         router.refresh();
                     });
 
